@@ -33,15 +33,22 @@ class JpMunicipality::Municipality < ActiveRecord::Base
   def self.load_data!
     data_path = Pathname(__FILE__).join('..', '..', '..', '..', 'data', 'municipalities.csv')
     require 'csv'
-    require 'nkf'
     transaction do
       CSV.foreach(data_path) do |row|
-        next if row[2].blank?
+        next if row[6].blank?
         m = find_or_initialize_by(code: row[0])
         m.define_singleton_method(:readonly?){ false }
         m.prefecture_code = row[0][0, 2]
-        m.name = row[2]
-        m.kana = row[4].present? ? NKF.nkf('-Xww', row[4]) : nil
+
+        m.district_name = row[5]
+        m.name = row[6]
+
+        m.district_kana = row[2]
+        m.kana = row[3]
+
+        m.district_name_e = row[7]
+        m.name_e = row[8]
+
         m.save! if m.changed?
       end
     end
