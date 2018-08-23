@@ -10,32 +10,44 @@
 
 ### 全国地方公共団体コードを指定して市区町村を取得
 
-```
+```ruby
 JpMunicipility::Municipality.find("465291")
-# => #<JpMunicipality::Municipality:0x000055e545d8b028> {
+# => #<JpMunicipality::Municipality> {
                :code => "465291",
     :prefecture_code => "46",
+      :district_name => "大島郡",
                :name => "喜界町",
-               :kana => "キカイチョウ"
+      :district_kana => "オオシマグン",
+               :kana => "キカイチョウ",
+    :district_name_e => "OSHIMA GUN",
+             :name_e => "KIKAI CHO"
 }
 ```
 
 ### 都道府県コードを指定して市区町村の配列を取得
 
-```
+```ruby
 JpMunicipality::Municipality.by_prefecture_code("46")
 # => [
-    [ 0] #<JpMunicipality::Municipality:0x000055e546941d68> {
+    [ 0] #<JpMunicipality::Municipality> {
                    :code => "462012",
         :prefecture_code => "46",
+          :district_name => "",
                    :name => "鹿児島市",
-                   :kana => "カゴシマシ"
+          :district_kana => "",
+                   :kana => "カゴシマシ",
+        :district_name_e => "",
+                 :name_e => "KAGOSHIMA SHI"
     },
-    [ 1] #<JpMunicipality::Municipality:0x000055e5469402d8> {
+    [ 1] #<JpMunicipality::Municipality> {
                    :code => "462039",
         :prefecture_code => "46",
+          :district_name => "",
                    :name => "鹿屋市",
-                   :kana => "カノヤシ"
+          :district_kana => "",
+                   :kana => "カノヤシ",
+        :district_name_e => "",
+                 :name_e => "KANOYA SHI"
     },
     # ...
 ]
@@ -43,7 +55,7 @@ JpMunicipality::Municipality.by_prefecture_code("46")
 
 ### 関連として参照
 
-```
+```ruby
 class User < ApplicationRecord
   has_municipality
   # has_municipality :municipality_code # foreign_keyを指定
@@ -51,26 +63,34 @@ class User < ApplicationRecord
 end
 ```
 
-```
+```ruby
 > user.municipality_code = 131016
 
 > user.municipality
 # =>
-#<JpMunicipality::Municipality:0x0000565271a105d0> {
+#<JpMunicipality::Municipality> {
                :code => "131016",
     :prefecture_code => "13",
+      :district_name => "",
                :name => "千代田区",
-               :kana => "チヨダク"
+      :district_kana => "",
+               :kana => "チヨダク",
+    :district_name_e => "",
+             :name_e => "CHIYODA KU"
 }
 
 # `as: 関連名`を指定した場合
 > user.city
 # =>
-#<JpMunicipality::Municipality:0x0000565271a105d0> {
+#<JpMunicipality::Municipality> {
                :code => "131016",
     :prefecture_code => "13",
+      :district_name => "",
                :name => "千代田区",
-               :kana => "チヨダク"
+      :district_kana => "",
+               :kana => "チヨダク",
+    :district_name_e => "",
+             :name_e => "CHIYODA KU"
 }
 ```
 
@@ -106,4 +126,8 @@ $ bin/rails jp_municipality:load_data
 ```
 
 ## 出典
-本プログラムで使用しているデータ(municipalities.csv)は、[「都道府県コード及び市区町村コード(平成28年10月10日現在）_Excel](http://www.data.go.jp/data/dataset/soumu_20140909_0395/resource/dff2cb46-a11e-4879-b5d9-6c4776114e9a)を加工したものです。
+本プログラムで使用しているデータ(municipalities.csv)は、以下のデータを加工・合成・補修したものです。
+* [「都道府県コード及び市区町村コード」(平成28年10月10日現在)](http://www.soumu.go.jp/main_content/000562730.xls)
+* [郵便番号データ](https://www.post.japanpost.jp/zipcode/download.html)
+  * 住所の郵便番号(CSV形式) 読み仮名データの促音・拗音を小書きで表記するもの 2018年7月31日更新版
+  * 住所の郵便番号(ローマ字)(CSV形式) 2018年6月21日更新版
