@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jp_municipality (0.3.0)
+    jp_municipality (0.3.1)
       activerecord (>= 5.1.5, < 6.0)
       jp_prefecture
       railties (>= 5.1.5, < 6.0)

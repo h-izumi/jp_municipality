@@ -1,3 +1,7 @@
+## 0.3.1 ##
+* Add predicate methods for types.
+  * `city?`, `designated_city?`, `ward?`, `special_ward?`, `town?`, `village?`
+
 ## 0.3.0 ##
 * *Change table schema.*
 * Update Data.
