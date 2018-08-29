@@ -296,4 +296,32 @@ RSpec.describe JpMunicipality::Municipality do
       it { is_expected.to eq 'FUKUOKA SHI HAKATA KU' }
     end
   end
+
+  describe 'JpPrefecture compatible methods' do
+    let(:municipality) { FactoryBot.build(:kikaicho) }
+
+    describe '#name_h' do
+      subject { municipality.name_h }
+
+      it { is_expected.to eq 'きかいちょう' }
+    end
+
+    describe '#name_k' do
+      subject { municipality.name_k }
+
+      it { is_expected.to eq 'キカイチョウ' }
+    end
+
+    describe '#full_name_h' do
+      subject { municipality.full_name_h }
+
+      it { is_expected.to eq 'おおしまぐんきかいちょう' }
+    end
+
+    describe '#full_name_k' do
+      subject { municipality.full_name_k }
+
+      it { is_expected.to eq 'オオシマグンキカイチョウ' }
+    end
+  end
 end

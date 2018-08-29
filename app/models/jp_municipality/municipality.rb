@@ -70,12 +70,25 @@ class JpMunicipality::Municipality < ActiveRecord::Base
     town_or_village? && name[-1, 1] == '村'
   end
 
+  def district_name_h
+    district_kana.tr('ァ-ン', 'ぁ-ん')
+  end
+
+  def name_h
+    kana.tr('ァ-ン', 'ぁ-ん')
+  end
+
   def full_name
     district_name + name
   end
 
   def full_name_kana
     district_kana + kana
+  end
+  alias :full_name_k :full_name_kana
+
+  def full_name_h
+    full_name_kana.tr('ァ-ン', 'ぁ-ん')
   end
 
   def full_name_e
