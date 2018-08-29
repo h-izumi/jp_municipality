@@ -1,3 +1,9 @@
+## 0.4.0 ##
+* *Change pattern of ward's name*
+  * e.g. `{ district_name_e: '', name_e: 'FUKUOKA SHI HAKATA KU'}` -> `{ district_name_e: 'FUKUOKA SHI', name_e: 'HAKATA KU' }`
+* Add JpPrefecture compatible method.
+  * e.g. `name_h`
+
 ## 0.3.1 ##
 * Add predicate methods for types.
   * `city?`, `designated_city?`, `ward?`, `special_ward?`, `town?`, `village?`

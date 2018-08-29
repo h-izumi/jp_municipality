@@ -1,3 +1,9 @@
+## 0.4.0 ##
+* *行政区の名前パターンを変更*
+  * 例: `{ district_name: '', name: '福岡市博多区' }` -> `{ district_name: '福岡市', name: '博多区' }`
+* JpPrefecture風のメソッドを追加
+  * 例: `name_h`
+
 ## 0.3.1 ##
 * 種類判定用メソッドを追加
   * `city?`, `designated_city?`, `ward?`, `special_ward?`, `town?`, `village?`
