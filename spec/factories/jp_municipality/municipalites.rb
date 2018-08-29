@@ -50,9 +50,12 @@ FactoryBot.define do
     factory :fukuokashi_hakataku do
       code { '401323' }
       prefecture_code { '40' }
-      name { '福岡市博多区' }
-      kana { 'フクオカシハカタク' }
-      name_e { 'FUKUOKA SHI HAKATA KU' }
+      district_name { '福岡市' }
+      name { '博多区' }
+      district_kana { 'フクオカシ' }
+      kana { 'ハカタク' }
+      district_name_e { 'FUKUOKA SHI' }
+      name_e { 'HAKATA KU' }
     end
   end
 end
