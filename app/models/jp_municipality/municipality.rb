@@ -70,6 +70,19 @@ class JpMunicipality::Municipality < ActiveRecord::Base
     town_or_village? && name[-1, 1] == '村'
   end
 
+  def full_name
+    district_name + name
+  end
+
+  def full_name_kana
+    district_kana + kana
+  end
+
+  def full_name_e
+    return name_e if district_name_e.blank?
+    "#{district_name_e} #{name_e}"
+  end
+
   def self.load_data!
     data_path = Pathname(__FILE__).join('..', '..', '..', '..', 'data', 'municipalities.csv')
     require 'csv'
