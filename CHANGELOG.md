@@ -1,3 +1,7 @@
+## 0.4.1 ##
+* Fix data.
+  * wards of Sendai and Sagamihara
+
 ## 0.4.0 ##
 * *Change pattern of ward's name*
   * e.g. `{ district_name_e: '', name_e: 'FUKUOKA SHI HAKATA KU'}` -> `{ district_name_e: 'FUKUOKA SHI', name_e: 'HAKATA KU' }`
