@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency "activerecord", ">= 5.1.5", "< 6.0"
   s.add_dependency "jp_prefecture"
 
-  s.add_development_dependency "rails", ">= 5.1.5"
+  s.add_development_dependency "rails", ">= 5.2.3"
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "factory_bot_rails"
